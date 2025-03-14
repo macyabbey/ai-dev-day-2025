@@ -37,3 +37,6 @@
 Code will be open sourced tomorrow: https://github.com/jeffchuber/chroma-doom
 
 < Watching cool demo video of it trying to play Doom with this simple system >
+
+- Shared anecdote that the first time he trained it, he played doom too well, so it had no frame of reference for edge cases, like facing a wall and needing to turn.
+  + Helped to play the level "poorly" to help it understand what to do in failure/edge cases.
