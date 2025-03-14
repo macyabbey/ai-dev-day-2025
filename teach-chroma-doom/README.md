@@ -8,10 +8,9 @@
 
 - Can we do code golf (using only memory, no reasoning models) to create a system that can learn how to play doom?
  
-  
-- What is memory
+- What is memory?
   + Ability to remember and recall
-  + Makes context window dynamic to the context
+  + Makes context window *dynamic* to the context
   + Real-time updatable
   + Interpretable
   
@@ -40,3 +39,4 @@ Code will be open sourced tomorrow: https://github.com/jeffchuber/chroma-doom
 
 - Shared anecdote that the first time he trained it, he played doom too well, so it had no frame of reference for edge cases, like facing a wall and needing to turn.
   + Helped to play the level "poorly" to help it understand what to do in failure/edge cases.
+  
