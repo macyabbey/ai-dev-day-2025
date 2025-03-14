@@ -8,6 +8,7 @@ It contains:
 - [crew ai workshop materials](./crew-ai-agents/) (Macy attended)
 - [aws serverless agentic workflows with amazon bedrock materials](./aws-serverless-agentic-workflows-with-amazon-bedrock/) (Macy attended)
 - [teach chroma to play doom](./teach-chroma-doom/) (Macy attended)
+- [future of agent interoperability](./future-of-agent-interoperability/) (Macy attended)
 
 ## Config / setup
 
