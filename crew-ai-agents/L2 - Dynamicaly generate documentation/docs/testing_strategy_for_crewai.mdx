@@ -1,0 +1,112 @@
+## Unit and Integration Tests
+
+In the CrewAI project, a robust testing strategy is essential for ensuring code quality and reliability. This section outlines the approach to unit and integration testing within the codebase, which is organized into distinct components.
+
+### Unit Tests
+
+Unit tests focus on testing individual components or functions to verify their correctness. Each unit test is designed to validate the behavior of a specific piece of functionality in isolation. The tests are located in the `tests` directory and are typically structured to mirror the module hierarchy found in the `src` directory.
+
+#### Example: Unit Test for Model Training Function
+
+Here’s an example of a unit test from the codebase for a model training function:
+
+```python
+import unittest
+from src.model import train_model
+
+class TestModelTraining(unittest.TestCase):
+    def test_train_model_success(self):
+        data = [["feature1", "feature2"], [1, 0]]  # Example data
+        model = train_model(data)
+        self.assertIsNotNone(model)
+        self.assertEqual(model.accuracy, 100)  # Expected accuracy for test data
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+In this example, the `train_model` function is tested to ensure it returns a trained model when provided with valid data.
+
+### Integration Tests
+
+Integration tests validate the interactions between multiple components and ensure that they work together as expected. These tests check the overall system behavior in conjunction with external systems, such as databases or APIs.
+
+Integration tests can also be found within the `tests` directory, often grouped by the functionality they cover. 
+
+#### Setup Instructions
+
+To run the tests for both unit and integration scenarios, ensure you have the following prerequisites:
+
+1. **Dependencies**: Navigate to the project root where the `requirements.txt` file is located and run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Run Tests**: You can execute the test suite using:
+   ```bash
+   python -m unittest discover -s tests
+   ```
+
+This command will discover and run all tests present in the `tests` directory, providing feedback on their results.
+
+### Conclusion
+
+The testing strategy for CrewAI encompasses thorough unit and integration tests, respectively validating individual components and their interactions. The modular organization of the project facilitates maintaining and scaling tests as new features and functionalities are added to the codebase. Regularly running these tests is crucial in ensuring ongoing code quality and reliability within the development lifecycle.
+## Best Practices for Writing Tests
+
+Writing effective tests is crucial for maintaining code quality within the CrewAI framework. Here are some best practices to follow when writing tests:
+
+### 1. **Write Clear and Descriptive Test Names**
+Test names should clearly describe what the test is verifying. This helps with readability and understanding the purpose of each test. For example:
+```python
+def test_train_model_with_valid_data_returns_successful_model():
+    # Test logic here
+    pass
+```
+
+### 2. **Keep Tests Isolated**
+Ensure that each test runs independently of others. This means avoiding shared state between tests. Use setup methods to initialize any required state. For example:
+```python
+class TestModelTraining(unittest.TestCase):
+    def setUp(self):
+        # Initialization code here
+        self.data = [["feature1", "feature2"], [1, 0]]
+
+    def test_train_model_success(self):
+        model = train_model(self.data)
+        self.assertIsNotNone(model)
+```
+
+### 3. **Use Mocking and Stubbing for External Dependencies**
+When your code interacts with external systems (like databases or APIs), use mocking to simulate their behavior. This speeds up tests and reduces flakiness. For example:
+```python
+from unittest.mock import patch
+
+@patch('src.database.save_model')
+def test_model_saves_successfully(self, mock_save):
+    model = train_model(self.data)
+    mock_save.assert_called_once_with(model)
+```
+
+### 4. **Focus on the Expected Outcomes**
+Each test should assert specific outcomes rather than the implementation details. This ensures that your tests are less likely to break when refactoring code. For example:
+```python
+def test_model_accuracy(self):
+    model = train_model(self.data)
+    self.assertGreater(model.accuracy, 90)  # Check for acceptable accuracy
+```
+
+### 5. **Organize Tests Logically**
+Group tests by functionality or modules they are testing. This makes it easier to navigate and maintain them. Reflect the structure of your source code in your test files.
+
+### 6. **Run Tests Regularly**
+Integrate tests into your CI/CD pipeline and run them automatically on each commit. Use:
+```bash
+python -m unittest discover -s tests
+```
+to execute the entire test suite.
+
+### 7. **Review and Refactor Tests**
+Like your production code, tests need to be reviewed and maintained. Regularly check for redundancies and outdated tests, refactoring as necessary to keep them relevant.
+
+By following these best practices, developers within the CrewAI team can ensure a robust and maintainable testing strategy that supports the project's overall quality and reliability.

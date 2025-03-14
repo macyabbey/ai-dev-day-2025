@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "crew-ai"
+		},
+		{
+			"path": "aws-serverless-agentic-workflows-with-amazon-bedrock"
+		}
+	],
+	"settings": {}
+}

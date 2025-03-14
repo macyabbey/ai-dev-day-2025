@@ -1,0 +1,144 @@
+# Installation Guide
+
+To get started with CrewAI, follow the steps below to set up your development environment.
+
+## Prerequisites
+
+Before you begin, ensure that you have the following prerequisites:
+
+- Basic programming knowledge.
+- Familiarity with setting up development environments.
+- Python version >= 3.10 and < 3.13. To check your Python version, run:
+
+```bash
+python3 --version
+```
+
+If you need to update Python, visit [python.org/downloads](https://python.org/downloads).
+
+## Step 1: Clone the Repository
+
+Begin by cloning the CrewAI repository to your local machine. Open your terminal and run the command:
+
+```bash
+git clone https://your.repo.url/crewAI.git
+```
+
+## Step 2: Set Up the Environment
+
+Navigate to the project directory:
+
+```bash
+cd crewAI
+```
+
+### Python Environment
+
+It's recommended to use Python virtual environments to manage dependencies. You can set one up with:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
+### Install Dependencies
+
+Once your virtual environment is activated, install the required packages by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install all necessary packages specified in the `requirements.txt` file, enabling the basic functionalities of CrewAI.
+
+## Step 3: Configuration
+
+Before you can run CrewAI, you'll need to adjust the configuration settings. Configuration files are located in the `config` directory. You can create a custom configuration file based on the sample provided:
+
+1. Copy the sample configuration:
+    ```bash
+    cp config/sample_config.yaml config/config.yaml
+    ```
+
+2. Open `config.yaml` and modify any parameters necessary for your AI project settings.
+
+## Step 4: Running the Application
+
+Once everything is set up, you can start using CrewAI. For instance, initialize a basic AI model by navigating to the `src` directory and running:
+
+```bash
+python main.py
+```
+
+This command executes the main application script.
+
+## Example Code Snippet
+
+Here's a simple snippet to get you started with AI model training:
+
+```python
+import crewai
+
+# Initialize AI model
+model = crewai.Model()
+
+# Train the model with dataset
+model.train(data='path_to_your_dataset')
+```
+
+## Conclusion
+
+You are now ready to explore and utilize the CrewAI framework for collaborative AI development. Make sure to refer to the README for further details and advanced configurations. Happy coding!
+## Sample Application
+
+This section provides a simple application example to demonstrate how to utilize the functionalities of the CrewAI framework effectively. By following the provided code snippets, new users can easily set up a basic AI model training scenario.
+
+### Application Structure
+
+The CrewAI project is organized into several directories:
+- `src`: Contains the source code for application logic.
+- `config`: Stores configuration files necessary for application setup.
+
+### Example Code Snippet
+
+Here's a detailed walkthrough for training a basic AI model using CrewAI:
+
+1. **Import the CrewAI package**:
+
+   First, start by importing the necessary module from the CrewAI package:
+
+   ```python
+   import crewai
+   ```
+
+2. **Initialize the AI model**:
+
+   Create an instance of the AI model:
+
+   ```python
+   model = crewai.Model()
+   ```
+
+3. **Prepare your dataset**:
+
+   Ensure you have your dataset ready. For example, let's say you have your data stored at `path_to_your_dataset`.
+
+4. **Train the model**:
+
+   Use the `train` method of the model object to start training. You need to specify the path to your dataset:
+
+   ```python
+   model.train(data='path_to_your_dataset')
+   ```
+
+5. **Run the application**:
+
+   To execute this code, save it into a Python file within the `src` directory and run it using the following command in your terminal:
+
+   ```bash
+   python src/main.py
+   ```
+
+### Conclusion
+
+This simple application example demonstrates the core functionalities of the CrewAI framework, showcasing how to set up, configure, and train an AI model efficiently. For further details and advanced configurations, please refer to the README file within the project repository.

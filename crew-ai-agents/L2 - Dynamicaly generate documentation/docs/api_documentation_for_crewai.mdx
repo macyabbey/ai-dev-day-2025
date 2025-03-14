@@ -1,0 +1,130 @@
+## Overview of APIs
+
+The CrewAI project provides an extensive suite of APIs designed to facilitate collaborative AI development and deployment. These APIs enable developers to interact with various components of the project, streamline workflows, and integrate functionalities seamlessly.
+
+### Purpose
+
+The primary purpose of the CrewAI APIs is to provide users with a straightforward way to conduct operations related to AI model training, deployment, and management within the collaborative environment of CrewAI. These APIs follow RESTful principles, ensuring a predictable and standardized way to perform API calls.
+
+### Usage
+
+To effectively utilize the CrewAI APIs, developers should be familiar with the following:
+
+1. **API Endpoints**: Each functionality is accessible through specific endpoints defined in the API documentation. Developers should refer to the documentation for a detailed list of available endpoints and their corresponding actions.
+   
+2. **Authentication**: Most APIs require authentication. Developers must acquire an API key or Bearer token to authorize requests. Proper authentication ensures secure interactions with the services.
+
+3. **Data Formats**: All API interactions support JSON data formats, both for requests and responses. Structuring requests according to the specified JSON format is crucial for successful operations.
+
+### Example API Call for Model Training
+
+Below is an example of how to make an API call to initiate model training within CrewAI:
+
+```bash
+POST /api/v1/models/train
+Content-Type: application/json
+Authorization: Bearer YOUR_API_KEY
+
+{
+  "model_name": "example_model",
+  "training_data": "data_set_identifier",
+  "parameters": {
+    "epochs": 10,
+    "batch_size": 32
+  }
+}
+```
+This example demonstrates how to send a POST request to the model training endpoint. Be sure to replace `YOUR_API_KEY` with a valid key and properly specify the model name and data set.
+
+### Summary
+
+The CrewAI APIs are essential tools for developers looking to leverage collaborative AI development capabilities. By understanding the usage, purpose, and examples provided in this API overview, developers can effectively harness the power of CrewAI to enhance their AI workflows.
+## Request Parameters
+
+The CrewAI API requires specific request parameters depending on the operation being performed. Below are details of the commonly used request parameters for model training.
+
+### Model Training Request Parameters
+
+When making a request to the model training endpoint, the following parameters should be included in the JSON body of the request:
+
+- **model_name** (string, required): The name of the model that you want to train. This should be a unique identifier for the model within the CrewAI environment.
+  
+- **training_data** (string, required): An identifier or path to the dataset that will be used for training the model. This dataset must be pre-processed and available within the system.
+
+- **parameters** (object, optional): A key-value pair object that includes additional training parameters as needed. Common fields under parameters may include:
+  - **epochs** (integer, optional): The number of complete passes through the training dataset; the default is usually set at 10.
+  - **batch_size** (integer, optional): The number of training examples used in one iteration; a common value is 32.
+
+### Example Request
+
+Here’s an example of how the JSON body of the request should look when calling the model training API:
+
+```json
+{
+  "model_name": "example_model",
+  "training_data": "data_set_identifier",
+  "parameters": {
+    "epochs": 10,
+    "batch_size": 32
+  }
+}
+```
+
+### Validations
+
+Make sure to validate the parameters before sending the request to guarantee a successful API call. Invalid or missing parameters may result in error responses from the API.
+
+By using the specified request parameters accurately, developers can leverage the CrewAI APIs effectively to streamline AI model training and deployment.
+## Response Structures
+
+The response structures of the CrewAI APIs are designed to provide developers with clear and organized data upon a successful execution of API calls. Each API endpoint returns a JSON object that conveys relevant information related to the request. This section outlines the typical structure of API responses, error handling, and examples for better understanding.
+
+### Successful Response Structure
+
+A successful response typically includes the following components:
+
+- **status** (string): A message indicating the outcome of the request. Common values are "success" and "error".
+- **data** (object): The actual data returned from the API, which varies based on the endpoint being called.
+- **message** (string): A human-readable message providing additional context about the response.
+
+#### Example Successful Response
+
+Here is a sample of what a successful response from a model training operation might look like:
+
+```json
+{
+  "status": "success",
+  "data": {
+    "model_id": "12345",
+    "model_name": "example_model",
+    "training_status": "completed",
+    "epochs": 10,
+    "batch_size": 32
+  },
+  "message": "Model training completed successfully."
+}
+```
+
+### Error Response Structure
+
+In the event of an error, the API will return a response with the following structure:
+
+- **status** (string): A value of "error" indicating that something went wrong.
+- **code** (integer): A numerical code representing the type of error that occurred. Common codes include 400 for bad requests and 500 for server errors.
+- **message** (string): A human-readable message that describes the error in detail.
+
+#### Example Error Response
+
+Here is an example of how an error response might appear:
+
+```json
+{
+  "status": "error",
+  "code": 400,
+  "message": "Invalid training data specified. Please check the dataset identifier."
+}
+```
+
+### Conclusion
+
+Understanding the structure of API responses in CrewAI is crucial for effectively handling the data returned from the server. By following the outlined structures, developers can ensure they correctly parse and utilize the information provided by the APIs, leading to efficient and robust application development.
