@@ -30,5 +30,7 @@
   
 - https://github.com/i-am-bee/beeai
   + https://github.com/i-am-bee/beeai/pull/282
-  
+  + Left a comment here: https://github.com/i-am-bee/beeai/discussions/284#discussioncomment-12506540
+
 - DEMO showing iambee - agent registering, agent communication
+
